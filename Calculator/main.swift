@@ -8,6 +8,8 @@
 
 import Foundation
 
+/* BUILD A CALCULATOR */
+
 // four functions to add, subtract, multiply, divide
 let add = {
     (firstNum: Int, secondNum: Int) -> Int in
@@ -35,15 +37,22 @@ func mathOp(op: (Int, Int) -> Int, firstNum: Int, secondNum: Int) -> Int {
 }
 
 
-print("1 + 4 = \(add(1,4))")
-print("1 - 5 = \(subtract(1,5))")
-print("2 * 19 = \(multiply(2,19))")
-print("12 / 3 = \(divide(12,3))")
-print("4 + 3 = \(mathOp(add, firstNum: 4, secondNum: 3))")
+print("Test for four functions")
+print("1 + 4 = \(add(1, 4))") // 5
+print("1 - 5 = \(subtract(1, 5))") // -4
+print("2 * 19 = \(multiply(2, 19))") // 38
+print("12 / 3 = \(divide(12, 3))") // 4
+print("4 + 3 = \(mathOp(add, firstNum: 4, secondNum: 3))") // 7
+print("4 - 2 = \(mathOp(subtract, firstNum: 4, secondNum: 2))") // 2
+print("3 * 6 = \(mathOp(multiply, firstNum: 3, secondNum: 6))") // 18
+print("100 / 10 = \(mathOp(divide, firstNum: 100, secondNum: 10))") // 10
+print("")
 
 
 
+/* ARRAY FUN */
 
+// four functions that takes in an array
 let addArray = {
     (intArr: [Int]) -> Int in
     var total = 0
@@ -55,11 +64,15 @@ let addArray = {
 
 let multiplyArray = {
     (intArr: [Int]) -> Int in
-    var total = 1
-    for nums in intArr {
-        total *= nums
+    if (intArr.count == 0) {
+        return 0;
+    } else {
+        var total = 1
+        for nums in intArr {
+            total *= nums
+        }
+        return total
     }
-    return total
 }
 
 let countArray = {
@@ -69,24 +82,39 @@ let countArray = {
 
 let avgArray = {
     (intArr: [Int]) -> Int in
-    var total = 0
-    for nums in intArr {
-        total += nums
+    if (intArr.count == 0) {
+        return 0;
+    } else {
+        var total = 0
+        for nums in intArr {
+            total += nums
+        }
+        return total / intArr.count
     }
-    return total / intArr.count
 }
 
-print(addArray([1, 4, 5, 1, 4]))
-print(multiplyArray([1, 4, 3, 2]))
-print(countArray([2, 4, 5]))
-print(avgArray([3, 4, 5, 6]))
-
-func mathOpArray(intArray: [Int], op: [Int] -> Int) -> Int {
+// function that takes one function as input
+func mathOpArray(op: [Int] -> Int, intArray: [Int]) -> Int {
     return op(intArray)
 }
 
 
+print("Test for arrays")
+print(addArray([1, 4, 5, 1, 4]))
+print(multiplyArray([1, 4, 3, 2]))
+print(countArray([2, 4, 5]))
+print(avgArray([3, 4, 5, 6]))
+print(mathOpArray(addArray, intArray: [3, 4, 5, 6]))
+print(mathOpArray(multiplyArray, intArray: [3, 4, 5, 6]))
+print(mathOpArray(countArray, intArray: [3, 4, 5, 6]))
+print(mathOpArray(avgArray, intArray: [3, 4, 5, 6]))
+print("")
 
+
+
+/* POINTS */
+
+// functions that takes in tuples
 func addPoints(left: (Int, Int), right: (Int, Int)) -> (Int, Int) {
     return (left.0 + right.0, left.1 + right.1)
 }
@@ -95,17 +123,38 @@ func subtractPoints(left: (Int, Int), right: (Int, Int)) -> (Int, Int) {
     return (left.0 - right.0, left.1 - right.1)
 }
 
-print(addPoints((1,4), right: (2,4)))
-print(subtractPoints((3,4), right: (5, 2)))
+let pointA = (1, 4)
+let pointB = (4, 2)
+
+print("Test for points")
+print(addPoints(pointA, right: pointB))
+print(subtractPoints(pointA, right: pointB))
+print("")
 
 
-func addPoints(left: Dictionary<String, Int>, right: Dictionary<String, Int>) -> Dictionary<String, Int> {
-     return ["x": left["x"]! + right["x"]!, "y": left["y"]! + right["y"]!]
+// functions that takes in dictionaries
+func addPoints(dict1: [String:Int], dict2: [String:Int]) -> [String:Int] {
+     return ["x": dict1["x"]! + dict2["x"]!, "y": dict1["y"]! + dict2["y"]!]
 }
 
-func subtractPoints(left: Dictionary<String, Int>, right: Dictionary<String, Int>) -> Dictionary<String, Int> {
-     return ["x": left["x"]! - right["x"]!, "y": left["y"]! - right["y"]!]
+func subtractPoints(dict1: [String:Int], dict2: [String:Int]) -> [String:Int] {
+     return ["x": dict1["x"]! - dict2["x"]!, "y": dict1["y"]! - dict2["y"]!]
 }
 
+func addPoints(dict1: [String:Double], dict2: [String:Double]) -> [String:Double] {
+    return ["x": dict1["x"]! + dict2["x"]!, "y": dict1["y"]! + dict2["y"]!]
+}
 
+func subtractPoints(dict1: [String:Double], dict2: [String:Double]) -> [String:Double] {
+    return ["x": dict1["x"]! - dict2["x"]!, "y": dict1["y"]! - dict2["y"]!]
+}
 
+let dictA = ["x": 0, "y": 5]
+let dictB = ["x": 1, "y": 2]
+
+print("Test for dictionaries")
+print(addPoints(dictA, dict2: dictB))
+print(subtractPoints(dictA, dict2: dictB))
+
+print(addPoints(["x": 4.5, "y": 5.3], dict2: ["x": 4.5, "y": 5.3]))
+print(subtractPoints(["x": 4.5, "y": 5.3], dict2: ["x": 4.5, "y": 5.3]))
