@@ -11,26 +11,29 @@ import Foundation
 print("Hello, World!")
 
 
-//four functions to add, subtract, multiply, divide
-
+// four functions to add, subtract, multiply, divide
 let add = {
-    (left : Int, right : Int) -> Int in return left + right
+    (firstNum : Int, secondNum : Int) -> Int in
+    return firstNum + secondNum
 }
 
 let subtract = {
-    (left : Int, right : Int) -> Int in return left - right
+    (firstNum : Int, secondNum : Int) -> Int in
+    return firstNum - secondNum
 }
 
 let multiply = {
-    (left : Int, right : Int) -> Int in return left * right
+    (firstNum : Int, secondNum : Int) -> Int in
+    return firstNum * secondNum
 }
 
 let divide = {
-    (left : Int, right : Int) -> Int in return left / right
+    (firstNum : Int, secondNum : Int) -> Int in
+    return firstNum / secondNum
 }
 
-func mathOp(left: Int, right : Int, op : (Int, Int) -> Int) -> Int {
-    return op(left, right)
+func mathOp(op : (Int, Int) -> Int, firstNum: Int, secondNum : Int) -> Int {
+    return op(firstNum, secondNum)
 }
 
 
@@ -39,7 +42,7 @@ print(subtract(1,5))
 print(multiply(2,19))
 print(divide(10,3))
 
-print(mathOp(1,right: 4,op: add))
+print(mathOp(add, firstNum: 1, secondNum: 4))
 
 
 let addArray = {
@@ -68,6 +71,35 @@ let countArray = {
     (intArr : [Int]) -> Int in
     return intArr.count
 }
+
+let avgArray = {
+    (intArr : [Int]) -> Int in
+    var total = 0
+    for nums in intArr {
+        total += nums
+    }
+    return total / intArr.count
+}
+
+print(countArray([2, 4, 5]))
+print(avgArray([3, 4, 5, 6]))
+
+func mathOpArray(intArray: [Int], op : [Int] -> Int) -> Int {
+    return op(intArray)
+}
+
+
+func addPoints(left : (Int, Int), right : (Int, Int)) -> (Int, Int) {
+    return (left.0 + right.0, left.1 + right.1)
+}
+
+func subtractPoints(left : (Int, Int), right : (Int, Int)) -> (Int, Int) {
+    return (left.0 - right.0, left.1 - right.1)
+}
+
+print(addPoints((1,4), right : (2,4)))
+print(subtractPoints((3,4), right: (5, 2)))
+
 
 
 
