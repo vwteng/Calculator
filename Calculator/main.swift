@@ -134,19 +134,63 @@ print("")
 
 // functions that takes in dictionaries
 func addPoints(dict1: [String:Int], dict2: [String:Int]) -> [String:Int] {
-    return ["x": dict1["x"]! + dict2["x"]!, "y": dict1["y"]! + dict2["y"]!]
+    var intDict = [String:Int]()
+    if dict1.keys.contains("x") && dict2.keys.contains("x") {
+        intDict["x"] = dict1["x"]! + dict2["x"]!
+    } else {
+        intDict["N/A"] = nil
+    }
+    if dict1.keys.contains("y") && dict2.keys.contains("y") {
+        intDict["y"] = dict1["y"]! + dict2["y"]!
+    } else {
+        intDict["N/A"] = nil
+    }
+    return intDict
 }
 
 func subtractPoints(dict1: [String:Int], dict2: [String:Int]) -> [String:Int] {
-    return ["x": dict1["x"]! - dict2["x"]!, "y": dict1["y"]! - dict2["y"]!]
+    var intDict = [String:Int]()
+    if dict1.keys.contains("x") && dict2.keys.contains("x") {
+        intDict["x"] = dict1["x"]! - dict2["x"]!
+    } else {
+        intDict["N/A"] = nil
+    }
+    if dict1.keys.contains("y") && dict2.keys.contains("y") {
+        intDict["y"] = dict1["y"]! - dict2["y"]!
+    } else {
+        intDict["N/A"] = nil
+    }
+    return intDict
 }
 
 func addPoints(dict1: [String:Double], dict2: [String:Double]) -> [String:Double] {
-    return ["x": dict1["x"]! + dict2["x"]!, "y": dict1["y"]! + dict2["y"]!]
+    var doubDict = [String:Double]()
+    if dict1.keys.contains("x") && dict2.keys.contains("x") {
+        doubDict["x"] = dict1["x"]! + dict2["x"]!
+    } else {
+        doubDict["N/A"] = nil
+    }
+    if dict1.keys.contains("y") && dict2.keys.contains("y") {
+        doubDict["y"] = dict1["y"]! + dict2["y"]!
+    } else {
+        doubDict["N/A"] = nil
+    }
+    return doubDict
 }
 
 func subtractPoints(dict1: [String:Double], dict2: [String:Double]) -> [String:Double] {
-    return ["x": dict1["x"]! - dict2["x"]!, "y": dict1["y"]! - dict2["y"]!]
+    var doubDict = [String:Double]()
+    if dict1.keys.contains("x") && dict2.keys.contains("x") {
+        doubDict["x"] = dict1["x"]! - dict2["x"]!
+    } else {
+        doubDict["N/A"] = nil
+    }
+    if dict1.keys.contains("y") && dict2.keys.contains("y") {
+        doubDict["y"] = dict1["y"]! - dict2["y"]!
+    } else {
+        doubDict["N/A"] = nil
+    }
+    return doubDict
 }
 
 let dictA = ["x": 0, "y": 5]
@@ -158,3 +202,7 @@ print(subtractPoints(dictA, dict2: dictB))
 
 print(addPoints(["x": 4.5, "y": 5.3], dict2: ["x": 4.5, "y": 5.3]))
 print(subtractPoints(["x": 4.5, "y": 5.3], dict2: ["x": 4.5, "y": 5.3]))
+
+print("Test for dictionaries without x's or y's")
+print(addPoints(["a": 4.5, "y": 5.3], dict2: ["a": 4.5, "b": 5.3]))
+print(subtractPoints(["x": 4.5, "b": 5.3], dict2: ["x": 4.2, "b": 5.3]))
