@@ -134,11 +134,11 @@ print("")
 
 // functions that takes in dictionaries
 func addPoints(dict1: [String:Int], dict2: [String:Int]) -> [String:Int] {
-     return ["x": dict1["x"]! + dict2["x"]!, "y": dict1["y"]! + dict2["y"]!]
+    return ["x": dict1["x"]! + dict2["x"]!, "y": dict1["y"]! + dict2["y"]!]
 }
 
 func subtractPoints(dict1: [String:Int], dict2: [String:Int]) -> [String:Int] {
-     return ["x": dict1["x"]! - dict2["x"]!, "y": dict1["y"]! - dict2["y"]!]
+    return ["x": dict1["x"]! - dict2["x"]!, "y": dict1["y"]! - dict2["y"]!]
 }
 
 func addPoints(dict1: [String:Double], dict2: [String:Double]) -> [String:Double] {
